@@ -26,8 +26,7 @@ import java.util.StringTokenizer;
 		        }
 		        if(!num.equals("-")){
 		        	word.set(num);
-		        	System.out.println("system.out:("+key+","+num+")");
-		            logger.info("log4j: ("+key+","+num+")");
+		            logger.info("("+key+","+num+")");
 		            context.write(word, one);
 		        }
 		    }
