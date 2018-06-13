@@ -1,3 +1,5 @@
+package part1;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -7,25 +9,23 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.log4j.Logger;
         
-public class WordCount {
+public class AverageWordCount {
 	
-	private Logger logger = Logger.getLogger(WordCount.class);
         
  public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
-        Job job = new Job(conf, "wordcount");
-        job.setJarByClass(WordCount.class);
-
-
+        Job job = new Job(conf, "wordcount"); 
+        job.setJarByClass(AverageWordCount.class);
+        
+    
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(IntWritable.class);
+        
+    job.setMapperClass(AverageMap.class);
+    job.setReducerClass(AverageReduce.class);
 
-    job.setMapperClass(Map.class);
-    job.setReducerClass(Reduce.class);
-
-    job.setInputFormatClass(TextInputFormat.class);
+     job.setInputFormatClass(TextInputFormat.class);
     job.setOutputFormatClass(TextOutputFormat.class);
         
     FileInputFormat.addInputPath(job, new Path(args[0]));

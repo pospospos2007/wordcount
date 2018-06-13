@@ -25,7 +25,7 @@
         <module name="wordcount" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel target="1.8">
       <module name="wordcount" target="1.8" />
     </bytecodeTargetLevel>
   </component>
